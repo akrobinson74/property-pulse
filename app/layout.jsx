@@ -1,5 +1,12 @@
 import React from "react";
 import "@/assets/styles/globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import AuthProvider from "@/components/AuthProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { GlobalProvider } from "@/context/GlobalContext";
+import "photoswipe/dist/photoswipe.css";
 
 export const metadata = {
   title: "PropertyPulse | Find The Perfect Rental",
@@ -9,11 +16,18 @@ export const metadata = {
 
 const MainLayout = ({ children }) => {
   return (
-    <html lang="en">
-      <body>
-        <div>{children}</div>
-      </body>
-    </html>
+    <GlobalProvider>
+      <AuthProvider>
+        <html lang="en">
+          <body>
+            <Navbar />
+            <div>{children}</div>
+            <Footer />
+            <ToastContainer />
+          </body>
+        </html>
+      </AuthProvider>
+    </GlobalProvider>
   );
 };
 
